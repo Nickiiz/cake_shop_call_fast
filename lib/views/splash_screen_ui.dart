@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:async';
+
+import 'package:cake_shop_call_fast/views/show_shop_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,7 +14,43 @@ class SplashScreenUI extends StatefulWidget {
 }
 
 class _SplashScreenUIState extends State<SplashScreenUI> {
+  Timer? _timer;
+
   @override
+  void initState() {
+    //   // หน่วงหน้าจอ แล้วเปิดไปหน้า Show shop ui
+    //   Future.delayed(
+    //     Duration(seconds: 3),
+    //     () {
+    //       Navigator.pushReplacement(
+    //         context,
+    //         MaterialPageRoute(
+    //           builder: (context) => ShowShopUI(),
+    //         ),
+    //       );
+    //     },
+    //   );
+    //ถ้าจะกลับไปแก้หน้า splash ต้องคอมเม้น หน่วงเวลา _Time ที่อยู่ข้างล่าง ไว้
+    _timer = Timer(
+      Duration(seconds: 3),
+      () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ShowShopUI(),
+          ),
+        );
+      },
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer!.cancel();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.pink[100],
@@ -64,27 +103,41 @@ class _SplashScreenUIState extends State<SplashScreenUI> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.width * 0.02,
+              Expanded(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.02,
+                ),
               ),
-              ElevatedButton.icon(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.cake,
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).size.width * 0.1,
                 ),
-                label: Text(
-                  "let's go! สั่งกันเลย",
-                  style: GoogleFonts.kanit(),
-                ),
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(
-                    MediaQuery.of(context).size.width * 0.5,
-                    MediaQuery.of(context).size.height * 0.015,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ShowShopUI(),
+                      ),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.cake,
                   ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                  label: Text(
+                    "let's go! สั่งกันเลย",
+                    style: GoogleFonts.kanit(),
                   ),
-                  backgroundColor: Colors.pink,
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: Size(
+                      MediaQuery.of(context).size.width * 0.6,
+                      MediaQuery.of(context).size.height * 0.06,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    backgroundColor: Colors.pink,
+                  ),
                 ),
               ),
             ],
