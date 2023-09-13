@@ -41,11 +41,11 @@ dependencies:
   carousel_slider: ^4.2.1 #ทำส่วนไสลด์ของ images
   dots_indicator: ^3.0.0 #มักใช้คู่กับ carousel
   url_launcher: ^6.1.12 #ทำให้โทผ่านแอพ เปิดเวป facebook ส่ง sms...
-  map_launcher: ^2.5.0+1 #เปิดแผนที่ได้
+  maps_launcher: ^2.2.0 #เปิดแผนที่ได้
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icon/bg_welcome.png"
+  image_path: "assets/icon/s71.jpg"
   
 
 dev_dependencies:

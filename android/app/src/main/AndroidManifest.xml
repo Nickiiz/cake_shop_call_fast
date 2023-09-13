@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="cake_shop_call_fast"
+        android:label="อยากกินเค้ก"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
